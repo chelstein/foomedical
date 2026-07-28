@@ -18,7 +18,22 @@ const medplum = new MedplumClient({
 });
 
 const theme = createTheme({
-  primaryColor: 'teal',
+  colors: {
+    // Dr. Star NMD brand green: calm, natural, trust-first
+    pine: [
+      '#eaf5ef',
+      '#d4e9dd',
+      '#b1d7c3',
+      '#8bc3a6',
+      '#68b18c',
+      '#4f9f78',
+      '#3f8f68',
+      '#337a58',
+      '#285f45',
+      '#1b4230',
+    ],
+  },
+  primaryColor: 'pine',
   primaryShade: 8,
   fontSizes: {
     xs: '0.6875rem',

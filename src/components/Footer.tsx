@@ -10,15 +10,14 @@ export function Footer(): JSX.Element {
       <div className={classes.inner}>
         <Container p="xl">
           <Stack gap="xl">
-            <SimpleGrid cols={4}>
-              <Anchor href="https://www.medplum.com/docs/tutorials/api-basics/create-fhir-data">Getting started</Anchor>
-              <Anchor href="https://www.medplum.com/docs/tutorials">Playing with Medplum</Anchor>
-              <Anchor href="https://github.com/medplum/foomedical">Open Source</Anchor>
-              <Anchor href="https://www.medplum.com/docs">Documentation</Anchor>
+            <SimpleGrid cols={{ base: 1, sm: 3 }}>
+              <Anchor href="https://www.drstarnmd.com">drstarnmd.com</Anchor>
+              <Text size="sm">1631 E. Guadalupe Rd. Ste. 104, Tempe, AZ 85283</Text>
+              <Text size="sm">Functional Medicine &amp; Digestive Health</Text>
             </SimpleGrid>
             <Divider />
             <Text c="dimmed" size="sm">
-              &copy; {new Date().getFullYear()} Foo Medical, Inc. All rights reserved.
+              &copy; {new Date().getFullYear()} Dr. Star NMD, PLLC. All rights reserved.
             </Text>
           </Stack>
         </Container>
