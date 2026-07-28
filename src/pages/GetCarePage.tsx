@@ -1,6 +1,6 @@
 // SPDX-FileCopyrightText: Copyright Orangebot, Inc. and Medplum contributors
 // SPDX-License-Identifier: Apache-2.0
-import { Alert, Loader } from '@mantine/core';
+import { Alert, Button, Loader } from '@mantine/core';
 import type { Appointment, Bundle, HealthcareService, Patient, Reference, Slot } from '@medplum/fhirtypes';
 import { createReference, getExtensionValue, getReferenceString, isDefined, normalizeErrorString } from '@medplum/core';
 import { Document, BaseScheduler, useMedplum } from '@medplum/react';
@@ -9,11 +9,13 @@ import { useSearchOne } from '@medplum/react-hooks';
 import { IconInfoCircle } from '@tabler/icons-react';
 import { useCallback, useMemo, useState } from 'react';
 import type { JSX } from 'react';
+import { useNavigate } from 'react-router';
 
 const SERVICE_TYPE_REFERENCE_URI = 'https://medplum.com/fhir/service-type-reference';
 
 export function GetCare(): JSX.Element {
   const medplum = useMedplum();
+  const navigate = useNavigate();
   const patient = medplum.getProfile() as Patient;
   const [schedule, loading] = useSearchOne('Schedule');
 
@@ -135,6 +137,7 @@ export function GetCare(): JSX.Element {
               </a>
               .
             </p>
+            <Button onClick={() => navigate('/appointments')?.catch(console.error)}>View My Appointments</Button>
           </div>
         )}
       </BaseScheduler>

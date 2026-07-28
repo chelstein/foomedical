@@ -1,9 +1,10 @@
 // SPDX-FileCopyrightText: Copyright Orangebot, Inc. and Medplum contributors
 // SPDX-License-Identifier: Apache-2.0
-import { Alert, Button, Stack, Text, Title } from '@mantine/core';
+import { Alert, Button, Loader, Stack, Text, Title } from '@mantine/core';
 import { createReference } from '@medplum/core';
 import type { Patient, Questionnaire, QuestionnaireResponse } from '@medplum/fhirtypes';
 import { Document, QuestionnaireForm, useMedplum } from '@medplum/react';
+import { useSearchOne } from '@medplum/react-hooks';
 import { IconCircleCheck } from '@tabler/icons-react';
 import { useState } from 'react';
 import type { JSX } from 'react';
@@ -14,6 +15,8 @@ export function PatientIntakeQuestionnairePage(): JSX.Element {
   const navigate = useNavigate();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | undefined>();
+  const [serverQuestionnaire, questionnaireLoading] = useSearchOne('Questionnaire', { name: 'patient-intake' });
+  const activeQuestionnaire = serverQuestionnaire ?? questionnaire;
 
   async function handleQuestionnaireSubmit(formData: QuestionnaireResponse): Promise<void> {
     try {
@@ -27,6 +30,14 @@ export function PatientIntakeQuestionnairePage(): JSX.Element {
     } catch {
       setError('There was a problem saving your form. Please try again or call the office.');
     }
+  }
+
+  if (questionnaireLoading) {
+    return (
+      <Document width={800}>
+        <Loader />
+      </Document>
+    );
   }
 
   return (
@@ -50,7 +61,7 @@ export function PatientIntakeQuestionnairePage(): JSX.Element {
               {error}
             </Alert>
           )}
-          <QuestionnaireForm questionnaire={questionnaire} onSubmit={handleQuestionnaireSubmit} />
+          <QuestionnaireForm questionnaire={activeQuestionnaire} onSubmit={handleQuestionnaireSubmit} />
         </>
       )}
     </Document>
