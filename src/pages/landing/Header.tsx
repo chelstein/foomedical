@@ -87,13 +87,10 @@ export function Header(): JSX.Element {
   const theme = useMantineTheme();
 
   const links = services.map((item) => (
-    <Anchor
-      href="https://www.drstarnmd.com/services-treatments"
-      target="_blank"
-      rel="noreferrer"
-      underline="never"
+    <UnstyledButton
       className={classes.subLink}
       key={item.title}
+      onClick={() => navigate('/register')?.catch(console.error)}
     >
       <Group wrap="nowrap" align="flex-start">
         <ThemeIcon size={34} variant="default" radius="md">
@@ -108,7 +105,7 @@ export function Header(): JSX.Element {
           </Text>
         </div>
       </Group>
-    </Anchor>
+    </UnstyledButton>
   ));
 
   return (
