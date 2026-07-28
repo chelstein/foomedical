@@ -39,33 +39,33 @@ import classes from './Header.module.css';
 const mockdata = [
   {
     icon: IconCode,
-    title: 'Open source',
-    description: 'This Pokémon’s cry is very loud and distracting',
+    title: 'Functional medicine',
+    description: 'Root-cause evaluation and whole-person treatment plans',
   },
   {
     icon: IconCoin,
-    title: 'Free for everyone',
-    description: 'The fluid of Smeargle’s tail secretions changes',
+    title: 'Digestive health',
+    description: 'Gut-focused care, nutrition guidance, and lab work',
   },
   {
     icon: IconBook,
-    title: 'Documentation',
-    description: 'Yanma is capable of seeing 360 degrees without',
+    title: 'Care plans',
+    description: 'Personalized plans built around prevention and balance',
   },
   {
     icon: IconFingerprint,
-    title: 'Security',
-    description: 'The shell’s rounded shape and the grooves on its.',
+    title: 'Private and secure',
+    description: 'Your health record is encrypted and protected',
   },
   {
     icon: IconChartPie3,
-    title: 'Analytics',
-    description: 'This Pokémon uses its flying ability to quickly chase',
+    title: 'Labs and results',
+    description: 'Review lab results and track progress over time',
   },
   {
     icon: IconNotification,
-    title: 'Notifications',
-    description: 'Combusken battles with the intensely hot flames it spews',
+    title: 'Secure messaging',
+    description: 'Message the practice directly from your portal',
   },
 ];
 
@@ -133,33 +133,29 @@ export function Header(): JSX.Element {
                     <Group justify="space-between">
                       <div>
                         <Text fw={500} size="sm">
-                          Get started
+                          New patients
                         </Text>
                         <Text size="xs" color="dimmed">
-                          Their food sources have decreased, and their numbers
+                          Create your account to book visits and message the practice
                         </Text>
                       </div>
-                      <Button variant="default">Get started</Button>
+                      <Button variant="default" onClick={() => navigate('/register')?.catch(console.error)}>
+                        Become a patient
+                      </Button>
                     </Group>
                   </div>
                 </HoverCard.Dropdown>
               </HoverCard>
-              <a href="#" className={classes.link}>
-                Counseling
-              </a>
-              <a href="#" className={classes.link}>
-                Physicians
-              </a>
-              <a href="#" className={classes.link}>
-                More
+              <a href="https://www.drstarnmd.com" className={classes.link}>
+                About the practice
               </a>
             </Group>
 
             <Group className={classes.hiddenMobile}>
               <Button variant="default" onClick={() => navigate('/signin')?.catch(console.error)}>
-                Log in
+                Sign in
               </Button>
-              <Button onClick={() => navigate('/register')?.catch(console.error)}>Sign up</Button>
+              <Button onClick={() => navigate('/register')?.catch(console.error)}>Become a patient</Button>
             </Group>
 
             <Burger opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} />
@@ -185,17 +181,14 @@ export function Header(): JSX.Element {
           <UnstyledButton className={classes.link} onClick={toggleLinks}>
             <Center inline>
               <Box component="span" mr={5}>
-                Features
+                Services
               </Box>
               <IconChevronDown size={16} />
             </Center>
           </UnstyledButton>
           <Collapse in={linksOpened}>{links}</Collapse>
-          <a href="#" className={classes.link}>
-            Learn
-          </a>
-          <a href="#" className={classes.link}>
-            Academy
+          <a href="https://www.drstarnmd.com" className={classes.link}>
+            About the practice
           </a>
 
           <Divider my="sm" />
@@ -204,7 +197,7 @@ export function Header(): JSX.Element {
             <Button variant="default" onClick={() => navigate('/signin')?.catch(console.error)}>
               Log in
             </Button>
-            <Button onClick={() => navigate('/register')?.catch(console.error)}>Sign up</Button>
+            <Button onClick={() => navigate('/register')?.catch(console.error)}>Become a patient</Button>
           </Group>
         </ScrollArea>
       </Drawer>

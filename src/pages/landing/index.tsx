@@ -3,6 +3,7 @@
 import { AppShell, Box, Button, Container, Group, Stack, Text, Title, useMantineTheme } from '@mantine/core';
 import cx from 'clsx';
 import type { JSX } from 'react';
+import { useNavigate } from 'react-router';
 import { Footer } from '../../components/Footer';
 import DoctorImage from '../../img/landingPage/doctor.jpg';
 import EngineeringImage from '../../img/landingPage/engineering.jpg';
@@ -13,29 +14,26 @@ import classes from './index.module.css';
 
 const features = [
   {
-    title: 'Comprehsive Care Plans',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+    title: 'Functional medicine',
+    description: 'Root-cause care that looks at the whole person — body, mind, and the life you live — not just symptoms.',
   },
   {
-    title: 'No hidden fees',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+    title: 'Digestive health',
+    description: 'Focused support for gut health, nutrition, and long-term digestive wellness.',
   },
   {
-    title: '24/7 Messaging',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+    title: 'Prevention first',
+    description: 'An ounce of prevention is worth a pound of cure. Personalized plans built around keeping you well.',
   },
   {
-    title: 'Clinically rigorous',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+    title: 'Your record, anywhere',
+    description: 'Message the practice, review labs, and manage your care plan securely from any device.',
   },
 ];
 
 export function LandingPage(): JSX.Element {
   const theme = useMantineTheme();
+  const navigate = useNavigate();
   return (
     <AppShell className={classes.outer} header={{ height: 100 }}>
       <Header />
@@ -45,20 +43,31 @@ export function LandingPage(): JSX.Element {
           <div className={classes.inner}>
             <div className={classes.content}>
               <Title className={classes.title}>
-                An extraordinary
+                Care for
                 <br />
-                <span className={classes.highlight}>doctor&apos;s office</span>
+                <span className={classes.highlight}>the whole you</span>
               </Title>
               <Text size="lg" c="dimmed" mt="md">
-                This is not actually a medical practice, this is a sample open source application for developers to
-                clone, customize and run.
+                Dr. Star NMD is a naturopathic practice in Tempe, Arizona focused on functional medicine, digestive
+                health, and prevention.
               </Text>
               <Group mt={30}>
-                <Button radius="xl" size="md" className={classes.control}>
-                  Get started
+                <Button
+                  radius="xl"
+                  size="md"
+                  className={classes.control}
+                  onClick={() => navigate('/register')?.catch(console.error)}
+                >
+                  Become a patient
                 </Button>
-                <Button variant="default" radius="xl" size="md" className={classes.control}>
-                  Source code
+                <Button
+                  variant="default"
+                  radius="xl"
+                  size="md"
+                  className={classes.control}
+                  onClick={() => navigate('/signin')?.catch(console.error)}
+                >
+                  Sign in
                 </Button>
               </Group>
             </div>
@@ -69,14 +78,14 @@ export function LandingPage(): JSX.Element {
           <div className={classes.inner}>
             <div style={{ width: 500 }}>
               <Title order={3} fw={500} c={theme.primaryColor} mb="lg">
-                Healthcare
+                Whole-istic healthcare
               </Title>
               <Title order={1} fw={500} mb="md">
                 A better way to get care
               </Title>
               <Text size="xl" c="gray">
-                Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in
-                accusamus quisquam.
+                We look at the whole body, the mind, our beliefs, and the emotions we carry — and how we can live a
+                well balanced life.
               </Text>
             </div>
             <img className={classes.heroImage3} src={LabImage} alt="Laboratory" />
