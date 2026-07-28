@@ -19,7 +19,7 @@ const testimonials = [
     role: 'Life Coach',
   },
   {
-    quote: 'Dr. Star has compassion and genuinely cares. I highly recommend her — she is a breath of fresh air.',
+    quote: 'Dr. Star has compassion and genuinely cares. I highly recommend her. She is a breath of fresh air.',
     name: 'Amber Z.',
     role: 'Patient',
   },
@@ -49,7 +49,7 @@ const features = [
   {
     title: 'Functional medicine',
     description:
-      'Root-cause evaluation and whole-person treatment. Dr. Star examines the body, mind, beliefs, and lifestyle — not just symptoms.',
+      'Root-cause evaluation and whole-person treatment. Dr. Star examines the body, mind, beliefs, and lifestyle, not just symptoms.',
   },
   {
     title: 'Gut health & food allergy testing',
@@ -121,7 +121,7 @@ export function LandingPage(): JSX.Element {
                 A better way to get care
               </Title>
               <Text size="xl" c="gray">
-                We look at the whole body, the mind, our beliefs, and the emotions we carry — and how we can live a
+                We look at the whole body, the mind, our beliefs, and the emotions we carry, and how we can live a
                 well balanced life.
               </Text>
             </div>
@@ -211,7 +211,7 @@ export function LandingPage(): JSX.Element {
                 latin: 'Prevenir',
                 english: 'Prevention is the Best Cure',
                 description:
-                  'Lifestyle, nutrition, and exercise are always part of the treatment plan — before illness takes hold.',
+                  'Lifestyle, nutrition, and exercise are always part of the treatment plan, before illness takes hold.',
               },
             ].map((p, i) => (
               <Grid.Col key={`p-${i}`} span={{ base: 12, sm: 6, md: 4 }}>

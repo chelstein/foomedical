@@ -30,7 +30,7 @@ const carouselItems = [
     icon: <IconClipboard size={28} />,
     title: 'New Patient Intake Form',
     description:
-      'Before your first visit, complete our intake form. It covers your health history, current goals, and required consents — takes about 10–15 minutes.',
+      'Before your first visit, complete our intake form. It covers your health history, current goals, and required consents. Takes about 10-15 minutes.',
     url: '/patient-intake-questionnaire',
     label: 'Start Intake Form',
   },
@@ -54,7 +54,7 @@ const carouselItems = [
     icon: <IconHeartbeat size={28} />,
     title: 'Your Health Record',
     description:
-      'Lab results, medications, vaccines, and vitals — your complete health record available anytime from your portal.',
+      'Lab results, medications, vaccines, and vitals. Your complete health record available anytime from your portal.',
     url: '/health-record',
     label: 'Open Health Record',
   },

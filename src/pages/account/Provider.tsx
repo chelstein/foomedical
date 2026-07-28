@@ -79,7 +79,7 @@ export function Provider(): JSX.Element {
                   <List.Item>Functional Medicine &amp; Root-Cause Diagnostics</List.Item>
                   <List.Item>Digestive Health &amp; Food Allergy Testing</List.Item>
                   <List.Item>Hormone Testing &amp; Balancing (Men &amp; Women)</List.Item>
-                  <List.Item>Weight Loss — Peptides &amp; GLP-1s</List.Item>
+                  <List.Item>Weight Loss - Peptides &amp; GLP-1s</List.Item>
                   <List.Item>IV Therapies &amp; Vitamin Shots</List.Item>
                   <List.Item>TCM: Acupuncture, Cupping &amp; Gua Sha</List.Item>
                   <List.Item>Women's Wellness Exams</List.Item>
@@ -94,9 +94,9 @@ export function Provider(): JSX.Element {
                   Education
                 </Text>
                 <List size="sm" spacing="xs">
-                  <List.Item>Doctoral degree — Sonoran University of Health Sciences (formerly SCNM), 2015</List.Item>
-                  <List.Item>B.S. Kinesiology — Arizona State University</List.Item>
-                  <List.Item>A.A.S. — Mesa Community College</List.Item>
+                  <List.Item>Doctoral degree, Sonoran University of Health Sciences (formerly SCNM), 2015</List.Item>
+                  <List.Item>B.S. Kinesiology, Arizona State University</List.Item>
+                  <List.Item>A.A.S., Mesa Community College</List.Item>
                 </List>
               </div>
 
