@@ -9,6 +9,8 @@ import { Router } from './Router';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { Loading } from './components/Loading';
+import { AboutPage } from './pages/AboutPage';
+import { PrivacyPage } from './pages/PrivacyPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { ServicePage } from './pages/services';
 import { SignInPage } from './pages/SignInPage';
@@ -28,6 +30,8 @@ export function App(): JSX.Element | null {
         <Route path="signin" element={<SignInPage />} />
         <Route path="register" element={<RegisterPage />} />
         <Route path="services/:slug" element={<ServicePage />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route path="privacy" element={<PrivacyPage />} />
         <Route path="*" element={<Navigate replace to="/" />} />
       </Routes>
     );

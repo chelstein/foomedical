@@ -1,7 +1,8 @@
 // SPDX-FileCopyrightText: Copyright Orangebot, Inc. and Medplum contributors
 // SPDX-License-Identifier: Apache-2.0
-import { Anchor, Container, Divider, SimpleGrid, Stack, Text } from '@mantine/core';
+import { Anchor, Container, Divider, Group, SimpleGrid, Stack, Text } from '@mantine/core';
 import type { JSX } from 'react';
+import { Link } from 'react-router';
 import classes from './Footer.module.css';
 
 export function Footer(): JSX.Element {
@@ -29,9 +30,19 @@ export function Footer(): JSX.Element {
               <Text size="sm">Functional Medicine &amp; Digestive Health</Text>
             </SimpleGrid>
             <Divider />
-            <Text c="dimmed" size="sm">
-              &copy; {new Date().getFullYear()} Dr. Star NMD, PLLC. All rights reserved.
-            </Text>
+            <Group justify="space-between" wrap="wrap">
+              <Text c="dimmed" size="sm">
+                &copy; {new Date().getFullYear()} Dr. Star NMD, PLLC. All rights reserved.
+              </Text>
+              <Group gap="md">
+                <Link to="/about" style={{ color: 'inherit', fontSize: 'var(--mantine-font-size-sm)' }}>
+                  About
+                </Link>
+                <Link to="/privacy" style={{ color: 'inherit', fontSize: 'var(--mantine-font-size-sm)' }}>
+                  Privacy Policy
+                </Link>
+              </Group>
+            </Group>
           </Stack>
         </Container>
       </div>

@@ -21,6 +21,8 @@ import { Responses } from './pages/health-record/Responses';
 import { Vaccine } from './pages/health-record/Vaccine';
 import { Vaccines } from './pages/health-record/Vaccines';
 import { Vitals } from './pages/health-record/Vitals';
+import { AppointmentDetailPage } from './pages/AppointmentDetailPage';
+import { AppointmentsPage } from './pages/AppointmentsPage';
 import { HomePage } from './pages/HomePage';
 import { MessagesPage } from './pages/MessagesPage';
 import { ObservationPage } from './pages/ObservationPage';
@@ -59,6 +61,8 @@ export function Router(): JSX.Element {
         <Route path="action-items" element={<ActionItems />} />
         <Route path="action-items/:itemId" element={<ActionItem />} />
       </Route>
+      <Route path="appointments" element={<AppointmentsPage />} />
+      <Route path="appointments/:appointmentId" element={<AppointmentDetailPage />} />
       <Route path="get-care" element={<GetCare />} />
       <Route path="smart-health-links" element={<SmartHealthLinksPage />} />
       <Route path="account" element={<AccountPage />}>

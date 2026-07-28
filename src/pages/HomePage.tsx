@@ -1,7 +1,6 @@
 // SPDX-FileCopyrightText: Copyright Orangebot, Inc. and Medplum contributors
 // SPDX-License-Identifier: Apache-2.0
 import {
-  Anchor,
   Avatar,
   Box,
   Button,
@@ -17,7 +16,7 @@ import {
 import { formatHumanName } from '@medplum/core';
 import type { Patient, Practitioner } from '@medplum/fhirtypes';
 import { useMedplumProfile } from '@medplum/react';
-import { IconChecklist, IconClipboard, IconHeartbeat, IconMessage } from '@tabler/icons-react';
+import { IconCalendar, IconChecklist, IconClipboard, IconHeartbeat, IconMessage } from '@tabler/icons-react';
 import type { JSX } from 'react';
 import { useNavigate } from 'react-router';
 import DoctorImage from '../img/homePage/doctor.svg';
@@ -57,6 +56,13 @@ const carouselItems = [
       'Lab results, medications, vaccines, and vitals. Your complete health record available anytime from your portal.',
     url: '/health-record',
     label: 'Open Health Record',
+  },
+  {
+    icon: <IconCalendar size={28} />,
+    title: 'My Appointments',
+    description: 'View your upcoming and past appointments with Dr. Star.',
+    url: '/appointments',
+    label: 'View Appointments',
   },
 ];
 
@@ -116,8 +122,8 @@ export function HomePage(): JSX.Element {
         <Container>
           <Grid>
             {carouselItems.map((item, index) => (
-              <Grid.Col key={`card-${index}`} span={3} pb={40}>
-                <Card shadow="md" radius="md" className={classes.card} p="xl">
+              <Grid.Col key={`card-${index}`} span={{ base: 12, sm: 6, lg: 3 }} pb={40}>
+                <Card shadow="md" radius="md" className={classes.card} p="xl" style={{ height: '100%' }}>
                   {item.icon}
                   <Text size="lg" fw={500} mt="md">
                     {item.title}
@@ -125,7 +131,9 @@ export function HomePage(): JSX.Element {
                   <Text size="sm" c="dimmed" my="sm">
                     {item.description}
                   </Text>
-                  <Anchor href={item.url}>{item.label}</Anchor>
+                  <Button variant="subtle" px={0} onClick={() => navigate(item.url)?.catch(console.error)}>
+                    {item.label}
+                  </Button>
                 </Card>
               </Grid.Col>
             ))}

@@ -3,7 +3,7 @@
 import { AppShell, Burger, Container, Group, Menu, UnstyledButton, useMantineTheme } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { ResourceAvatar, useMedplumProfile } from '@medplum/react';
-import { IconChevronDown, IconLink, IconLogout, IconSettings, IconUserCircle } from '@tabler/icons-react';
+import { IconChevronDown, IconCreditCard, IconLink, IconLogout, IconStethoscope, IconUserCircle } from '@tabler/icons-react';
 import cx from 'clsx';
 import { useState } from 'react';
 import type { JSX } from 'react';
@@ -63,10 +63,16 @@ export function Header(): JSX.Element {
                 Your profile
               </Menu.Item>
               <Menu.Item
-                leftSection={<IconSettings size={16} color={theme.colors.blue[6]} stroke={1.5} />}
-                onClick={() => navigate('/account/profile')?.catch(console.error)}
+                leftSection={<IconStethoscope size={16} color={theme.colors.blue[6]} stroke={1.5} />}
+                onClick={() => navigate('/account/provider')?.catch(console.error)}
               >
-                Settings
+                My provider
+              </Menu.Item>
+              <Menu.Item
+                leftSection={<IconCreditCard size={16} color={theme.colors.violet[6]} stroke={1.5} />}
+                onClick={() => navigate('/account/membership-and-billing')?.catch(console.error)}
+              >
+                Billing
               </Menu.Item>
               <Menu.Item
                 leftSection={<IconLink size={16} color={theme.colors.teal[6]} stroke={1.5} />}

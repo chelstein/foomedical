@@ -1,6 +1,6 @@
 // SPDX-FileCopyrightText: Copyright Orangebot, Inc. and Medplum contributors
 // SPDX-License-Identifier: Apache-2.0
-import { AppShell, Box, Button, Card, Container, Grid, Group, Stack, Text, Title, useMantineTheme } from '@mantine/core';
+import { Anchor, AppShell, Box, Button, Card, Container, Divider, Grid, Group, Stack, Text, Title, useMantineTheme } from '@mantine/core';
 import cx from 'clsx';
 import type { JSX } from 'react';
 import { useNavigate } from 'react-router';
@@ -230,6 +230,64 @@ export function LandingPage(): JSX.Element {
             ))}
           </Grid>
         </Container>
+        <Box py={80} style={{ borderTop: '1px solid var(--mantine-color-default-border)' }}>
+          <Container>
+            <Grid gutter={64} align="center">
+              <Grid.Col span={{ base: 12, md: 7 }}>
+                <Title order={2} fw={500} mb="sm">
+                  Ready to get started?
+                </Title>
+                <Text c="dimmed" size="lg" mb="xl" maw={520}>
+                  New patients are welcome. Create your account to request an appointment, complete intake paperwork,
+                  and message the practice directly.
+                </Text>
+                <Group>
+                  <Button size="md" radius="xl" onClick={() => navigate('/register')?.catch(console.error)}>
+                    Become a patient
+                  </Button>
+                  <Button
+                    variant="default"
+                    size="md"
+                    radius="xl"
+                    onClick={() => navigate('/signin')?.catch(console.error)}
+                  >
+                    Sign in
+                  </Button>
+                </Group>
+              </Grid.Col>
+              <Grid.Col span={{ base: 12, md: 5 }}>
+                <Stack gap="sm">
+                  <Title order={4} fw={500}>
+                    Dr. Star NMD, PLLC
+                  </Title>
+                  <Divider />
+                  <Text size="sm" c="dimmed">
+                    1631 E. Guadalupe Rd. Ste. 104
+                    <br />
+                    Tempe, AZ 85283
+                  </Text>
+                  <Text size="sm">
+                    <Anchor href="tel:+14803304818">(480) 330-4818</Anchor>
+                  </Text>
+                  <Text size="sm">
+                    <Anchor href="mailto:drstarnmd@gmail.com">drstarnmd@gmail.com</Anchor>
+                  </Text>
+                  <Text size="sm">
+                    <Anchor href="https://www.drstarnmd.com" target="_blank" rel="noreferrer">
+                      drstarnmd.com
+                    </Anchor>
+                  </Text>
+                  <Divider />
+                  <Text size="xs" c="dimmed">
+                    Monday - Friday: 9am - 5pm
+                    <br />
+                    Appointments required. Cash-pay and select insurance accepted.
+                  </Text>
+                </Stack>
+              </Grid.Col>
+            </Grid>
+          </Container>
+        </Box>
       </AppShell.Main>
       <Footer />
     </AppShell>
