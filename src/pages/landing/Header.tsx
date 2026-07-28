@@ -23,49 +23,60 @@ import {
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import {
-  IconBook,
-  IconChartPie3,
+  IconActivity,
   IconChevronDown,
-  IconCode,
-  IconCoin,
-  IconFingerprint,
-  IconNotification,
+  IconDroplet,
+  IconFlask,
+  IconHeartbeat,
+  IconLeaf,
+  IconScale,
+  IconYoga,
 } from '@tabler/icons-react';
 import type { JSX } from 'react';
 import { useNavigate } from 'react-router';
 import { Logo } from '../../components/Logo';
 import classes from './Header.module.css';
 
-const mockdata = [
+const services = [
   {
-    icon: IconCode,
-    title: 'Functional medicine',
+    icon: IconLeaf,
+    title: 'Functional Medicine',
     description: 'Root-cause evaluation and whole-person treatment plans',
   },
   {
-    icon: IconCoin,
-    title: 'Digestive health',
-    description: 'Gut-focused care, nutrition guidance, and lab work',
+    icon: IconFlask,
+    title: 'Food Allergy Testing & Gut Repair',
+    description: 'Identify triggers and heal your digestive system',
   },
   {
-    icon: IconBook,
-    title: 'Care plans',
-    description: 'Personalized plans built around prevention and balance',
+    icon: IconScale,
+    title: 'Weight Loss — Peptides & GLP-1s',
+    description: 'Evidence-based weight management with peptide therapy',
   },
   {
-    icon: IconFingerprint,
-    title: 'Private and secure',
-    description: 'Your health record is encrypted and protected',
+    icon: IconActivity,
+    title: 'Hormone Testing & Balancing',
+    description: 'Comprehensive panels and balancing for men and women',
   },
   {
-    icon: IconChartPie3,
-    title: 'Labs and results',
-    description: 'Review lab results and track progress over time',
+    icon: IconDroplet,
+    title: 'IV Therapies & Vitamin Shots',
+    description: 'Nutrient infusions for energy, immunity, and recovery',
   },
   {
-    icon: IconNotification,
-    title: 'Secure messaging',
-    description: 'Message the practice directly from your portal',
+    icon: IconHeartbeat,
+    title: 'Annual Check Ups & Physicals',
+    description: 'Comprehensive exams with diagnostic lab work',
+  },
+  {
+    icon: IconYoga,
+    title: 'Nutritional Counseling',
+    description: 'Personalized diet and lifestyle guidance',
+  },
+  {
+    icon: IconFlask,
+    title: 'TCM: Acupuncture, Cupping & Gua Sha',
+    description: 'Traditional Chinese medicine as part of integrative care',
   },
 ];
 
@@ -75,11 +86,11 @@ export function Header(): JSX.Element {
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
   const theme = useMantineTheme();
 
-  const links = mockdata.map((item) => (
+  const links = services.map((item) => (
     <UnstyledButton className={classes.subLink} key={item.title}>
       <Group wrap="nowrap" align="flex-start">
         <ThemeIcon size={34} variant="default" radius="md">
-          <item.icon style={{ width: rem(22), height: rem(22) }} color={theme.primaryColor} />
+          <item.icon style={{ width: rem(22), height: rem(22) }} color={theme.colors[theme.primaryColor][7]} />
         </ThemeIcon>
         <div>
           <Text size="sm" fw={500}>
@@ -103,7 +114,7 @@ export function Header(): JSX.Element {
             </UnstyledButton>
 
             <Group style={{ height: '100%' }} gap={0} className={classes.hiddenMobile}>
-              <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
+              <HoverCard width={700} position="bottom" radius="md" shadow="md" withinPortal>
                 <HoverCard.Target>
                   <a href="#" className={classes.link}>
                     <Center inline>
@@ -117,9 +128,9 @@ export function Header(): JSX.Element {
 
                 <HoverCard.Dropdown style={{ overflow: 'hidden' }}>
                   <Group justify="space-between" px="md">
-                    <Text fw={500}>Services</Text>
-                    <Anchor href="#" size="xs">
-                      View all
+                    <Text fw={500}>Services & Treatments</Text>
+                    <Anchor href="https://www.drstarnmd.com/services-treatments" size="xs" target="_blank">
+                      View on drstarnmd.com
                     </Anchor>
                   </Group>
 
@@ -133,10 +144,10 @@ export function Header(): JSX.Element {
                     <Group justify="space-between">
                       <div>
                         <Text fw={500} size="sm">
-                          New patients
+                          New patients welcome
                         </Text>
-                        <Text size="xs" color="dimmed">
-                          Create your account to book visits and message the practice
+                        <Text size="xs" c="dimmed">
+                          Create your account to book visits, complete intake paperwork, and message the practice
                         </Text>
                       </div>
                       <Button variant="default" onClick={() => navigate('/register')?.catch(console.error)}>
@@ -146,7 +157,7 @@ export function Header(): JSX.Element {
                   </div>
                 </HoverCard.Dropdown>
               </HoverCard>
-              <a href="https://www.drstarnmd.com" className={classes.link}>
+              <a href="https://www.drstarnmd.com" className={classes.link} target="_blank" rel="noreferrer">
                 About the practice
               </a>
             </Group>
@@ -187,7 +198,7 @@ export function Header(): JSX.Element {
             </Center>
           </UnstyledButton>
           <Collapse in={linksOpened}>{links}</Collapse>
-          <a href="https://www.drstarnmd.com" className={classes.link}>
+          <a href="https://www.drstarnmd.com" className={classes.link} target="_blank" rel="noreferrer">
             About the practice
           </a>
 
@@ -195,7 +206,7 @@ export function Header(): JSX.Element {
 
           <Group justify="center" grow pb="xl" px="md">
             <Button variant="default" onClick={() => navigate('/signin')?.catch(console.error)}>
-              Log in
+              Sign in
             </Button>
             <Button onClick={() => navigate('/register')?.catch(console.error)}>Become a patient</Button>
           </Group>
