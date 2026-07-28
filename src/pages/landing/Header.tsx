@@ -40,41 +40,49 @@ import classes from './Header.module.css';
 const services = [
   {
     icon: IconLeaf,
+    slug: 'functional-medicine',
     title: 'Functional Medicine',
     description: 'Root-cause evaluation and whole-person treatment plans',
   },
   {
     icon: IconFlask,
+    slug: 'food-allergy-testing',
     title: 'Food Allergy Testing & Gut Repair',
     description: 'Identify triggers and heal your digestive system',
   },
   {
     icon: IconScale,
+    slug: 'weight-loss',
     title: 'Weight Loss - Peptides & GLP-1s',
     description: 'Evidence-based weight management with peptide therapy',
   },
   {
     icon: IconActivity,
+    slug: 'hormone-testing',
     title: 'Hormone Testing & Balancing',
     description: 'Comprehensive panels and balancing for men and women',
   },
   {
     icon: IconDroplet,
+    slug: 'iv-therapies',
     title: 'IV Therapies & Vitamin Shots',
     description: 'Nutrient infusions for energy, immunity, and recovery',
   },
   {
     icon: IconHeartbeat,
+    slug: 'annual-checkups',
     title: 'Annual Check Ups & Physicals',
     description: 'Comprehensive exams with diagnostic lab work',
   },
   {
     icon: IconYoga,
+    slug: 'nutritional-counseling',
     title: 'Nutritional Counseling',
     description: 'Personalized diet and lifestyle guidance',
   },
   {
     icon: IconFlask,
+    slug: 'acupuncture',
     title: 'TCM: Acupuncture, Cupping & Gua Sha',
     description: 'Traditional Chinese medicine as part of integrative care',
   },
@@ -90,7 +98,7 @@ export function Header(): JSX.Element {
     <UnstyledButton
       className={classes.subLink}
       key={item.title}
-      onClick={() => navigate('/register')?.catch(console.error)}
+      onClick={() => navigate(`/services/${item.slug}`)?.catch(console.error)}
     >
       <Group wrap="nowrap" align="flex-start">
         <ThemeIcon size={34} variant="default" radius="md">
