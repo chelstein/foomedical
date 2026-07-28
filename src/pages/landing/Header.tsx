@@ -215,7 +215,15 @@ export function Header(): JSX.Element {
         <ScrollArea style={{ height: 'calc(100vh - 60px)' }} mx="-md">
           <Divider my="sm" />
 
-          <a href="#" className={classes.link}>
+          <a
+            href="#"
+            className={classes.link}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/')?.catch(console.error);
+              closeDrawer();
+            }}
+          >
             Home
           </a>
           <UnstyledButton className={classes.link} onClick={toggleLinks}>

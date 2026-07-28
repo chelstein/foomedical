@@ -1,7 +1,6 @@
 // SPDX-FileCopyrightText: Copyright Orangebot, Inc. and Medplum contributors
 // SPDX-License-Identifier: Apache-2.0
 import {
-  Anchor,
   Avatar,
   Box,
   Button,
@@ -116,8 +115,8 @@ export function HomePage(): JSX.Element {
         <Container>
           <Grid>
             {carouselItems.map((item, index) => (
-              <Grid.Col key={`card-${index}`} span={3} pb={40}>
-                <Card shadow="md" radius="md" className={classes.card} p="xl">
+              <Grid.Col key={`card-${index}`} span={{ base: 12, sm: 6, lg: 3 }} pb={40}>
+                <Card shadow="md" radius="md" className={classes.card} p="xl" style={{ height: '100%' }}>
                   {item.icon}
                   <Text size="lg" fw={500} mt="md">
                     {item.title}
@@ -125,7 +124,9 @@ export function HomePage(): JSX.Element {
                   <Text size="sm" c="dimmed" my="sm">
                     {item.description}
                   </Text>
-                  <Anchor href={item.url}>{item.label}</Anchor>
+                  <Button variant="subtle" px={0} onClick={() => navigate(item.url)?.catch(console.error)}>
+                    {item.label}
+                  </Button>
                 </Card>
               </Grid.Col>
             ))}
