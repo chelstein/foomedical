@@ -8,8 +8,12 @@
     "dev": "vite",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix src",
     "preview": "vite preview",
+    "start": "serve -s dist -l tcp://0.0.0.0:${PORT:-8080}",
     "test": "vitest run",
     "test:watch": "vitest watch"
+  },
+  "dependencies": {
+    "serve": "14.2.4"
   },
   "prettier": {
     "printWidth": 120,

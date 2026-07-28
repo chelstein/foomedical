@@ -1,0 +1,34 @@
+# DigitalOcean App Platform spec for Foo Medical.
+#
+# Foo Medical is a Vite single-page app — it builds to static files in `dist`
+# and has no server process. Deploy it as a Static Site component, not a Web
+# Service. (A Web Service will also work now that package.json has a `start`
+# script, but a static site is simpler and free on App Platform.)
+#
+# To use: create the app with `doctl apps create --spec .do/app.yaml`, or point
+# the App Platform UI at this repo and it will pick up this spec.
+name: dr-star-foo
+region: sfo
+static_sites:
+  - name: foomedical
+    github:
+      repo: chelstein/foomedical
+      branch: main
+      deploy_on_push: true
+    build_command: npm run build
+    output_dir: dist
+    # SPA fallback: serve index.html for all client-side routes
+    # (same behavior as the rewrite in vercel.json).
+    catchall_document: index.html
+    envs:
+      # Build-time Vite env vars. Defaults come from .env.defaults; override
+      # these in the App Platform UI to point at your own Medplum project.
+      - key: MEDPLUM_BASE_URL
+        scope: BUILD_TIME
+        value: https://api.medplum.com/
+      - key: MEDPLUM_PROJECT_ID
+        scope: BUILD_TIME
+        value: 9602358d-eeb0-4de8-bccf-e2438b5c9162
+      - key: MEDPLUM_CLIENT_ID
+        scope: BUILD_TIME
+        value: ""
