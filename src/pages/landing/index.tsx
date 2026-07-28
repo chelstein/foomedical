@@ -5,10 +5,10 @@ import cx from 'clsx';
 import type { JSX } from 'react';
 import { useNavigate } from 'react-router';
 import { Footer } from '../../components/Footer';
-import DoctorImage from '../../img/landingPage/doctor.jpg';
-import EngineeringImage from '../../img/landingPage/engineering.jpg';
-import LabImage from '../../img/landingPage/laboratory.jpg';
-import WorkingEnvironmentImage from '../../img/landingPage/working-environment.jpg';
+import BrickImage from '../../img/landingPage/drstar-brick.jpg';
+import DeskImage from '../../img/landingPage/drstar-desk.jpg';
+import HerbsImage from '../../img/landingPage/drstar-herbs.jpg';
+import PortraitImage from '../../img/landingPage/drstar-portrait.webp';
 import { Header } from './Header';
 import classes from './index.module.css';
 
@@ -38,7 +38,7 @@ export function LandingPage(): JSX.Element {
     <AppShell className={classes.outer} header={{ height: 100 }}>
       <Header />
       <AppShell.Main className={classes.outer}>
-        <img className={classes.heroImage1} src={WorkingEnvironmentImage} alt="Working Environment" />
+        <img className={classes.heroImage1} src={BrickImage} alt="Dr. Star outside the practice" />
         <Container>
           <div className={classes.inner}>
             <div className={classes.content}>
@@ -71,7 +71,7 @@ export function LandingPage(): JSX.Element {
                 </Button>
               </Group>
             </div>
-            <img className={classes.heroImage2} src={DoctorImage} alt="Doctor" />
+            <img className={classes.heroImage2} src={PortraitImage} alt="Dr. Estrella Sandoval-Becker, NMD" />
           </div>
         </Container>
         <Container>
@@ -88,7 +88,7 @@ export function LandingPage(): JSX.Element {
                 well balanced life.
               </Text>
             </div>
-            <img className={classes.heroImage3} src={LabImage} alt="Laboratory" />
+            <img className={classes.heroImage3} src={DeskImage} alt="Dr. Star in the office" />
           </div>
         </Container>
         <Container>
@@ -101,7 +101,7 @@ export function LandingPage(): JSX.Element {
                 </Box>
               ))}
             </Stack>
-            <img className={classes.heroImage4} src={EngineeringImage} alt="Laboratory" />
+            <img className={classes.heroImage4} src={HerbsImage} alt="Herbal medicine and supplements" />
           </div>
         </Container>
       </AppShell.Main>
