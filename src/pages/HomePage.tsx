@@ -3,16 +3,12 @@
 import {
   Anchor,
   Avatar,
-  Badge,
   Box,
   Button,
   Card,
   Container,
-  Flex,
   Grid,
   Group,
-  Image,
-  Overlay,
   Stack,
   Text,
   Title,
@@ -21,48 +17,46 @@ import {
 import { formatHumanName } from '@medplum/core';
 import type { Patient, Practitioner } from '@medplum/fhirtypes';
 import { useMedplumProfile } from '@medplum/react';
-import { IconChecklist, IconGift, IconSquareCheck } from '@tabler/icons-react';
+import { IconChecklist, IconClipboard, IconHeartbeat, IconMessage } from '@tabler/icons-react';
 import type { JSX } from 'react';
 import { useNavigate } from 'react-router';
 import DoctorImage from '../img/homePage/doctor.svg';
 import HealthRecordImage from '../img/homePage/health-record.svg';
-import HealthVisitImage from '../img/homePage/health-visit.jpg';
-import PharmacyImage from '../img/homePage/pharmacy.svg';
 import PillImage from '../img/homePage/pill.svg';
 import classes from './HomePage.module.css';
 
 const carouselItems = [
   {
-    img: <IconChecklist />,
-    title: 'Welcome to Dr. Star NMD',
+    icon: <IconClipboard size={28} />,
+    title: 'New Patient Intake Form',
     description:
-      'Lorem ipsum at porta donec ultricies ut, arcu morbi amet arcu ornare, curabitur pharetra magna tempus',
-    url: '/screening-questionnaire',
-    label: 'AHC HRSN Screening',
-  },
-  {
-    img: <IconChecklist />,
-    title: 'Patient Intake Questionnaire',
-    description:
-      'Lorem ipsum at porta donec ultricies ut, arcu morbi amet arcu ornare, curabitur pharetra magna tempus',
+      'Before your first visit, complete our intake form. It covers your health history, current goals, and required consents — takes about 10–15 minutes.',
     url: '/patient-intake-questionnaire',
-    label: 'Start Form',
+    label: 'Start Intake Form',
   },
   {
-    img: <IconChecklist />,
-    title: 'Select a Doctor',
+    icon: <IconChecklist size={28} />,
+    title: 'Health & Social Needs Screening',
     description:
-      'Lorem ipsum at porta donec ultricies ut, arcu morbi amet arcu ornare, curabitur pharetra magna tempus',
-    url: '/account/provider/choose-a-primary-care-povider',
-    label: 'Choose a Primary Care Provider',
+      'A short questionnaire about your social and health-related needs so Dr. Star can understand the full picture.',
+    url: '/screening-questionnaire',
+    label: 'Start Screening',
   },
   {
-    img: <IconChecklist />,
-    title: 'Emergency Contact',
+    icon: <IconMessage size={28} />,
+    title: 'Message the Practice',
     description:
-      'Lorem ipsum at porta donec ultricies ut, arcu morbi amet arcu ornare, curabitur pharetra magna tempus',
-    url: '/account',
-    label: 'Add emergency contact',
+      'Have a question or need to follow up on something? Send a secure message and we will get back to you within one business day.',
+    url: '/Communication',
+    label: 'Send a Message',
+  },
+  {
+    icon: <IconHeartbeat size={28} />,
+    title: 'Your Health Record',
+    description:
+      'Lab results, medications, vaccines, and vitals — your complete health record available anytime from your portal.',
+    url: '/health-record',
+    label: 'Open Health Record',
   },
 ];
 
@@ -70,35 +64,32 @@ const linkPages = [
   {
     img: HealthRecordImage,
     title: 'Health Record',
-    description: '',
     href: '/health-record',
   },
   {
     img: PillImage,
-    title: 'Request Prescription Renewal',
-    description: '',
+    title: 'Medications',
     href: '/health-record/medications',
   },
   {
-    img: PharmacyImage,
-    title: 'Preferred Pharmacy',
-    description: 'Walgreens D2866 1363 Divisadero St  DIVISADERO',
-    href: '#',
+    img: DoctorImage,
+    title: 'My Account',
+    href: '/account/profile',
   },
 ];
 
 const recommendations = [
   {
-    title: 'Get travel health recommendations',
-    description: 'Find out what vaccines and meds you need for your trip.',
+    title: 'Schedule a follow-up',
+    description: 'Contact the office to book your next appointment or check on available times.',
   },
   {
-    title: 'Get FSA/HSA reimbursement',
-    description: 'Request a prescription for over-the-counter items.',
+    title: 'Request records',
+    description: 'Need records sent to another provider? Message the practice and we will coordinate.',
   },
   {
-    title: 'Request health record',
-    description: 'Get records sent to or from Dr. Star NMD.',
+    title: 'Review your care plan',
+    description: 'Check your active care plan and action items in the Care Plan section.',
   },
 ];
 
@@ -110,46 +101,28 @@ export function HomePage(): JSX.Element {
 
   return (
     <Box bg="gray.0">
-      <Box className={classes.announcements}>
-        <span>
-          Announcements go here. <Anchor href="#">Include links if needed.</Anchor>
-        </span>
-      </Box>
       <div className={classes.hero}>
-        <Overlay
-          gradient="linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.4) 40%)"
-          opacity={1}
-          zIndex={0}
-        />
         <Container className={classes.heroContainer}>
           <Title className={classes.heroTitle}>
-            Hi <span className="text-teal-600">{profileName}</span>,<br /> we’re here to help
+            Hi <span style={{ color: theme.colors[theme.primaryColor][6] }}>{profileName}</span>,
+            <br /> welcome to your portal.
           </Title>
-          <Button size="xl" radius="xl" className={classes.heroButton}>
-            Get Care
+          <Button size="xl" radius="xl" className={classes.heroButton} onClick={() => navigate('/get-care')?.catch(console.error)}>
+            Request an Appointment
           </Button>
         </Container>
       </div>
-      <Box className={classes.callToAction}>
-        <Group justify="center">
-          <IconGift />
-          <p>Put calls to action here</p>
-          <Button variant="white" onClick={() => navigate('/messages')?.catch(console.error)}>
-            Send Message
-          </Button>
-        </Group>
-      </Box>
       <Box p="lg">
         <Container>
           <Grid>
             {carouselItems.map((item, index) => (
               <Grid.Col key={`card-${index}`} span={3} pb={40}>
                 <Card shadow="md" radius="md" className={classes.card} p="xl">
-                  <IconSquareCheck />
+                  {item.icon}
                   <Text size="lg" fw={500} mt="md">
                     {item.title}
                   </Text>
-                  <Text size="sm" color="dimmed" my="sm">
+                  <Text size="sm" c="dimmed" my="sm">
                     {item.description}
                   </Text>
                   <Anchor href={item.url}>{item.label}</Anchor>
@@ -161,51 +134,18 @@ export function HomePage(): JSX.Element {
       </Box>
       <Box p="lg">
         <Container>
-          <Card shadow="md" radius="md" className={classes.card} p="xl">
-            <IconSquareCheck />
-            <Text size="lg" fw={500} mt="md">
-              Better rest, better health
-            </Text>
-            <Text size="sm" color="dimmed" my="sm">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste
-              dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
-              impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
-            </Text>
-            <Group>
-              <Button>Invite Friends</Button>
-            </Group>
-          </Card>
-        </Container>
-      </Box>
-      <Box p="lg">
-        <Container>
-          <Card shadow="md" radius="md" className={classes.card} p="xl">
-            <Flex>
-              <Image src={HealthVisitImage} m="-40px 30px -40px -40px" w="40%" />
-              <div>
-                <Badge color={theme.primaryColor} size="xl">
-                  Now available
-                </Badge>
-                <Text size="lg" fw={500} mt="md">
-                  Title
-                </Text>
-                <Text size="sm" color="dimmed" my="sm">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque,
-                  iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
-                </Text>
-              </div>
-            </Flex>
-          </Card>
-        </Container>
-      </Box>
-      <Box p="lg">
-        <Container>
           <Grid columns={3} pb="xl">
             {linkPages.map((item, index) => (
-              <Grid.Col key={`card-${index}`} span={1}>
-                <Card shadow="md" radius="md" className={classes.card} p="xl">
-                  <Image src={item.img} w={80} />
+              <Grid.Col key={`link-${index}`} span={1}>
+                <Card
+                  shadow="md"
+                  radius="md"
+                  className={classes.card}
+                  p="xl"
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => navigate(item.href)?.catch(console.error)}
+                >
+                  <img src={item.img} width={80} alt="" />
                   <Text size="lg" fw={500} mt="md">
                     {item.title}
                   </Text>
@@ -223,11 +163,11 @@ export function HomePage(): JSX.Element {
                 <Group wrap="nowrap">
                   <Avatar src={DoctorImage} size="xl" />
                   <div>
-                    <Text fw={500}>Primary Care Provider</Text>
-                    <Text size="sm" color="dimmed" my="sm">
-                      Having a consistent, trusted provider can lead to better health.
+                    <Text fw={500}>Dr. Estrella Sandoval-Becker, NMD</Text>
+                    <Text size="sm" c="dimmed" my="sm">
+                      Naturopathic physician specializing in functional medicine and digestive health in Tempe, AZ.
                     </Text>
-                    <Button onClick={() => navigate('/account/provider')?.catch(console.error)}>Choose Provider</Button>
+                    <Button onClick={() => navigate('/account/provider')?.catch(console.error)}>View Provider</Button>
                   </div>
                 </Group>
               </Card>
@@ -235,10 +175,13 @@ export function HomePage(): JSX.Element {
             <Grid.Col span={1}>
               <Card shadow="md" radius="md" className={classes.card} p="xl">
                 <Stack>
+                  <Title order={5} c={theme.primaryColor}>
+                    Quick Links
+                  </Title>
                   {recommendations.map((item, index) => (
                     <div key={`recommendation-${index}`}>
                       <Text fw={500}>{item.title}</Text>
-                      <Text size="sm" color="dimmed" my="sm">
+                      <Text size="sm" c="dimmed">
                         {item.description}
                       </Text>
                     </div>
