@@ -19,21 +19,21 @@ const medplum = new MedplumClient({
 
 const theme = createTheme({
   colors: {
-    // Dr. Star NMD brand green: calm, natural, trust-first
-    pine: [
-      '#eaf5ef',
-      '#d4e9dd',
-      '#b1d7c3',
-      '#8bc3a6',
-      '#68b18c',
-      '#4f9f78',
-      '#3f8f68',
-      '#337a58',
-      '#285f45',
-      '#1b4230',
+    // Dr. Star NMD brand gold, from the practice logo at drstarnmd.com
+    gold: [
+      '#fdf9ea',
+      '#f8efc9',
+      '#f1e099',
+      '#e9cf67',
+      '#ddba38',
+      '#c7a326',
+      '#b08f1d',
+      '#9b7d16',
+      '#8a6d12',
+      '#5f4a0c',
     ],
   },
-  primaryColor: 'pine',
+  primaryColor: 'gold',
   primaryShade: 8,
   fontSizes: {
     xs: '0.6875rem',
