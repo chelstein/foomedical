@@ -4,6 +4,7 @@ import { BackgroundImage, Box, SimpleGrid } from '@mantine/core';
 import { RegisterForm } from '@medplum/react';
 import type { JSX } from 'react';
 import { useNavigate } from 'react-router';
+import BrickImage from '../img/landingPage/drstar-brick.jpg';
 
 export function RegisterPage(): JSX.Element {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ export function RegisterPage(): JSX.Element {
           <h2>Register with Dr. Star NMD</h2>
         </RegisterForm>
       </Box>
-      <BackgroundImage src="https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1567&amp;q=80" />
+      <BackgroundImage src={BrickImage} style={{ minHeight: '100vh' }} />
     </SimpleGrid>
   );
 }

@@ -125,9 +125,16 @@ export function GetCare(): JSX.Element {
           </Alert>
         )}
         {holdSuccess && (
-          <div>
-            <h3>You're all set!</h3>
-            <p>Your appointment has been created.</p>
+          <div style={{ textAlign: 'center', padding: '32px 0' }}>
+            <h3 style={{ marginBottom: 8 }}>Your appointment is confirmed.</h3>
+            <p style={{ color: 'var(--mantine-color-dimmed)', maxWidth: 440, margin: '0 auto 16px' }}>
+              Dr. Star's team will reach out to confirm any details before your visit. If you need to reschedule or
+              have questions, send us a message through the portal or call{' '}
+              <a href="tel:+14803304818" style={{ color: 'inherit' }}>
+                (480) 330-4818
+              </a>
+              .
+            </p>
           </div>
         )}
       </BaseScheduler>

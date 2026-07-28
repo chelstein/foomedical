@@ -1,27 +1,57 @@
 // SPDX-FileCopyrightText: Copyright Orangebot, Inc. and Medplum contributors
 // SPDX-License-Identifier: Apache-2.0
-import { getQuestionnaireAnswers } from '@medplum/core';
-import type { Questionnaire, QuestionnaireResponse } from '@medplum/fhirtypes';
-import { Document, QuestionnaireForm } from '@medplum/react';
+import { Alert, Button, Stack, Text, Title } from '@mantine/core';
+import { createReference } from '@medplum/core';
+import type { Patient, Questionnaire, QuestionnaireResponse } from '@medplum/fhirtypes';
+import { Document, QuestionnaireForm, useMedplum } from '@medplum/react';
+import { IconCircleCheck } from '@tabler/icons-react';
 import { useState } from 'react';
 import type { JSX } from 'react';
+import { useNavigate } from 'react-router';
 
 export function ScreeningQuestionnairePage(): JSX.Element {
+  const medplum = useMedplum();
+  const navigate = useNavigate();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | undefined>();
 
   async function handleQuestionnaireSubmit(formData: QuestionnaireResponse): Promise<void> {
-    const answers = getQuestionnaireAnswers(formData);
-    console.log(answers);
-    setIsSubmitted(true);
-    window.scrollTo(0, 0);
+    try {
+      const profile = medplum.getProfile() as Patient | undefined;
+      await medplum.createResource<QuestionnaireResponse>({
+        ...formData,
+        subject: profile ? createReference(profile) : undefined,
+      });
+      setIsSubmitted(true);
+      window.scrollTo(0, 0);
+    } catch {
+      setError('There was a problem saving your responses. Please try again or call the office.');
+    }
   }
 
   return (
     <Document width={800}>
       {isSubmitted ? (
-        <div>Thank you for submitting your questions</div>
+        <Stack align="center" gap="lg" py="xl">
+          <IconCircleCheck size={64} color="var(--mantine-color-gold-8)" />
+          <Title order={2} fw={500}>
+            Screening complete.
+          </Title>
+          <Text c="dimmed" ta="center" maw={480}>
+            Thank you for taking the time to fill this out. Dr. Star's team will review your responses and follow up
+            with you if there is anything to address.
+          </Text>
+          <Button onClick={() => navigate('/')?.catch(console.error)}>Back to home</Button>
+        </Stack>
       ) : (
-        <QuestionnaireForm questionnaire={questionnaire} onSubmit={handleQuestionnaireSubmit} />
+        <>
+          {error && (
+            <Alert color="red" mb="md" title="Submission error">
+              {error}
+            </Alert>
+          )}
+          <QuestionnaireForm questionnaire={questionnaire} onSubmit={handleQuestionnaireSubmit} />
+        </>
       )}
     </Document>
   );

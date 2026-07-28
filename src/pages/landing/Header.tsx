@@ -169,8 +169,25 @@ export function Header(): JSX.Element {
                   </div>
                 </HoverCard.Dropdown>
               </HoverCard>
-              <a href="https://www.drstarnmd.com" className={classes.link} target="_blank" rel="noreferrer">
-                About the practice
+              <a
+                href="#"
+                className={classes.link}
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/about')?.catch(console.error);
+                }}
+              >
+                About
+              </a>
+              <a
+                href="#"
+                className={classes.link}
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/privacy')?.catch(console.error);
+                }}
+              >
+                Privacy
               </a>
             </Group>
 
@@ -210,8 +227,27 @@ export function Header(): JSX.Element {
             </Center>
           </UnstyledButton>
           <Collapse in={linksOpened}>{links}</Collapse>
-          <a href="https://www.drstarnmd.com" className={classes.link} target="_blank" rel="noreferrer">
-            About the practice
+          <a
+            href="#"
+            className={classes.link}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/about')?.catch(console.error);
+              closeDrawer();
+            }}
+          >
+            About
+          </a>
+          <a
+            href="#"
+            className={classes.link}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/privacy')?.catch(console.error);
+              closeDrawer();
+            }}
+          >
+            Privacy
           </a>
 
           <Divider my="sm" />
