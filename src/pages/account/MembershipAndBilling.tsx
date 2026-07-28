@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: Copyright Orangebot, Inc. and Medplum contributors
 // SPDX-License-Identifier: Apache-2.0
-import { Box, Stack, Table, Title } from '@mantine/core';
+import { Alert, Box, Stack, Table, Text, Title } from '@mantine/core';
+import { IconInfoCircle } from '@tabler/icons-react';
 import { formatCoding, getReferenceString } from '@medplum/core';
 import type { Coverage, Patient } from '@medplum/fhirtypes';
 import { useMedplum } from '@medplum/react';
@@ -44,6 +45,16 @@ export function MembershipAndBilling(): JSX.Element {
   return (
     <Box p="xl">
       <Title mb="xl">Membership & Billing</Title>
+      <Alert icon={<IconInfoCircle />} color="gold" variant="light" mb="xl">
+        <Text size="sm" fw={500}>
+          Dr. Star NMD is a cash-pay naturopathic practice.
+        </Text>
+        <Text size="sm" mt={4}>
+          Payment is expected at the time of service. We do not bill insurance directly. Upon request, we can provide a
+          superbill for you to submit to your insurer for potential out-of-network reimbursement. Financial hardship
+          arrangements may be discussed with the office on a case-by-case basis.
+        </Text>
+      </Alert>
       <InfoSection title="Coverage">
         {coverages.length === 0 ? (
           <Box p="xl">No coverage</Box>

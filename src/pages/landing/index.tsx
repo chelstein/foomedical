@@ -1,6 +1,6 @@
 // SPDX-FileCopyrightText: Copyright Orangebot, Inc. and Medplum contributors
 // SPDX-License-Identifier: Apache-2.0
-import { AppShell, Box, Button, Container, Group, Stack, Text, Title, useMantineTheme } from '@mantine/core';
+import { AppShell, Box, Button, Card, Container, Grid, Group, Stack, Text, Title, useMantineTheme } from '@mantine/core';
 import cx from 'clsx';
 import type { JSX } from 'react';
 import { useNavigate } from 'react-router';
@@ -12,22 +12,59 @@ import PortraitImage from '../../img/landingPage/drstar-portrait.webp';
 import { Header } from './Header';
 import classes from './index.module.css';
 
+const testimonials = [
+  {
+    quote: 'Doc Star is an amazing doctor. She is kind, compassionate and nonjudgmental.',
+    name: 'Jeanette C.',
+    role: 'Life Coach',
+  },
+  {
+    quote: 'Dr. Star has compassion and genuinely cares. I highly recommend her — she is a breath of fresh air.',
+    name: 'Amber Z.',
+    role: 'Patient',
+  },
+  {
+    quote: 'Dr. Becker has done nothing but wonders for my health and life overall. Life changing.',
+    name: 'Serenity F.',
+    role: 'Patient',
+  },
+  {
+    quote: 'Since starting to see Dr. Star in 2023 the weight has come off and my health has come back!',
+    name: 'KL',
+    role: 'Business Owner',
+  },
+  {
+    quote: 'Dr. Star is a genuine and knowledgeable physician. She sees, you.',
+    name: 'Emily',
+    role: 'RN',
+  },
+  {
+    quote: 'Dr. Star is caring, compassionate and is your guide to better health.',
+    name: 'Don',
+    role: 'Personal Trainer',
+  },
+];
+
 const features = [
   {
     title: 'Functional medicine',
-    description: 'Root-cause care that looks at the whole person — body, mind, and the life you live — not just symptoms.',
+    description:
+      'Root-cause evaluation and whole-person treatment. Dr. Star examines the body, mind, beliefs, and lifestyle — not just symptoms.',
   },
   {
-    title: 'Digestive health',
-    description: 'Focused support for gut health, nutrition, and long-term digestive wellness.',
+    title: 'Gut health & food allergy testing',
+    description:
+      'Identify what is triggering your symptoms and follow a targeted gut-repair plan tailored to your body.',
   },
   {
-    title: 'Prevention first',
-    description: 'An ounce of prevention is worth a pound of cure. Personalized plans built around keeping you well.',
+    title: 'Hormone testing & balancing',
+    description:
+      'Comprehensive hormone panels and personalized balancing protocols for men and women at any stage of life.',
   },
   {
     title: 'Your record, anywhere',
-    description: 'Message the practice, review labs, and manage your care plan securely from any device.',
+    description:
+      'Message the practice, review labs, and manage your care plan securely from any device, any time.',
   },
 ];
 
@@ -103,6 +140,95 @@ export function LandingPage(): JSX.Element {
             </Stack>
             <img className={classes.heroImage4} src={HerbsImage} alt="Herbal medicine and supplements" />
           </div>
+        </Container>
+        <Box bg="var(--mantine-primary-color-light)" py={80}>
+          <Container>
+            <Title order={2} fw={500} ta="center" mb="xs">
+              What patients say
+            </Title>
+            <Text c="dimmed" ta="center" mb={48}>
+              Real words from Dr. Star's patients
+            </Text>
+            <Grid gutter="lg">
+              {testimonials.map((t, i) => (
+                <Grid.Col key={`t-${i}`} span={{ base: 12, sm: 6, md: 4 }}>
+                  <Card radius="lg" p="xl" h="100%">
+                    <Text size="sm" c="dimmed" fs="italic" mb="md">
+                      "{t.quote}"
+                    </Text>
+                    <Text fw={600} size="sm">
+                      {t.name}
+                    </Text>
+                    <Text size="xs" c="dimmed">
+                      {t.role}
+                    </Text>
+                  </Card>
+                </Grid.Col>
+              ))}
+            </Grid>
+          </Container>
+        </Box>
+        <Container py={80}>
+          <Title order={2} fw={500} ta="center" mb="xs">
+            The six principles of naturopathic medicine
+          </Title>
+          <Text c="dimmed" ta="center" mb={48}>
+            Dr. Star's practice is grounded in these core tenets
+          </Text>
+          <Grid gutter="lg">
+            {[
+              {
+                latin: 'Primum Non Nocere',
+                english: 'First, Do No Harm',
+                description:
+                  'Explore safe and natural alternatives to drugs in the treatment of physical, mental, and emotional illness.',
+              },
+              {
+                latin: 'Vis Medicatrix Naturae',
+                english: 'Healing Power of Nature',
+                description:
+                  "Teach and support the body's natural and inherent healing mechanisms through evidence-based natural therapies.",
+              },
+              {
+                latin: 'Tolle Causam',
+                english: 'Find the Cause',
+                description:
+                  'Identify the underlying causes of illness, particularly those rooted in the mental, emotional, and energetic realm.',
+              },
+              {
+                latin: 'Tolle Totum',
+                english: 'Treat the Whole Person',
+                description:
+                  'Address the complex interaction of physical, emotional, social, and mental factors that together make up the whole person.',
+              },
+              {
+                latin: 'Docere',
+                english: 'Doctor as Teacher',
+                description:
+                  'Empower patients with knowledge about self-healing through physiological and nutritional expression.',
+              },
+              {
+                latin: 'Prevenir',
+                english: 'Prevention is the Best Cure',
+                description:
+                  'Lifestyle, nutrition, and exercise are always part of the treatment plan — before illness takes hold.',
+              },
+            ].map((p, i) => (
+              <Grid.Col key={`p-${i}`} span={{ base: 12, sm: 6, md: 4 }}>
+                <Card radius="lg" p="xl" h="100%" withBorder>
+                  <Text size="xs" c="dimmed" tt="uppercase" fw={600} mb={4} style={{ letterSpacing: '0.08em' }}>
+                    {p.latin}
+                  </Text>
+                  <Text fw={600} mb="xs">
+                    {p.english}
+                  </Text>
+                  <Text size="sm" c="dimmed">
+                    {p.description}
+                  </Text>
+                </Card>
+              </Grid.Col>
+            ))}
+          </Grid>
         </Container>
       </AppShell.Main>
       <Footer />
