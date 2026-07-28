@@ -85,9 +85,9 @@ const questionnaire: Questionnaire = {
           type: 'choice',
           answerOption: [
             { valueCoding: { code: 'lt1mo', display: 'Less than a month' } },
-            { valueCoding: { code: '1-6mo', display: '1–6 months' } },
-            { valueCoding: { code: '6-12mo', display: '6–12 months' } },
-            { valueCoding: { code: '1-5yr', display: '1–5 years' } },
+            { valueCoding: { code: '1-6mo', display: '1-6 months' } },
+            { valueCoding: { code: '6-12mo', display: '6-12 months' } },
+            { valueCoding: { code: '1-5yr', display: '1-5 years' } },
             { valueCoding: { code: 'gt5yr', display: 'More than 5 years' } },
           ],
         },
@@ -116,8 +116,8 @@ const questionnaire: Questionnaire = {
           type: 'choice',
           answerOption: [
             { valueCoding: { code: 'lt5', display: 'Less than 5 hours' } },
-            { valueCoding: { code: '5-6', display: '5–6 hours' } },
-            { valueCoding: { code: '7-8', display: '7–8 hours' } },
+            { valueCoding: { code: '5-6', display: '5-6 hours' } },
+            { valueCoding: { code: '7-8', display: '7-8 hours' } },
             { valueCoding: { code: 'gt8', display: 'More than 8 hours' } },
           ],
         },
@@ -126,10 +126,10 @@ const questionnaire: Questionnaire = {
           text: 'How would you rate your sleep quality?',
           type: 'choice',
           answerOption: [
-            { valueCoding: { code: 'poor', display: 'Poor — I rarely feel rested' } },
-            { valueCoding: { code: 'fair', display: 'Fair — some nights are good' } },
-            { valueCoding: { code: 'good', display: 'Good — mostly restful' } },
-            { valueCoding: { code: 'excellent', display: 'Excellent — I sleep well' } },
+            { valueCoding: { code: 'poor', display: 'Poor: I rarely feel rested' } },
+            { valueCoding: { code: 'fair', display: 'Fair: some nights are good' } },
+            { valueCoding: { code: 'good', display: 'Good: mostly restful' } },
+            { valueCoding: { code: 'excellent', display: 'Excellent: I sleep well consistently' } },
           ],
         },
         {
@@ -137,10 +137,10 @@ const questionnaire: Questionnaire = {
           text: 'How would you rate your current overall stress level?',
           type: 'choice',
           answerOption: [
-            { valueCoding: { code: 'low', display: 'Low — mostly calm' } },
-            { valueCoding: { code: 'moderate', display: 'Moderate — manageable' } },
-            { valueCoding: { code: 'high', display: 'High — often overwhelming' } },
-            { valueCoding: { code: 'very-high', display: 'Very high — chronic stress' } },
+            { valueCoding: { code: 'low', display: 'Low: mostly calm' } },
+            { valueCoding: { code: 'moderate', display: 'Moderate: manageable' } },
+            { valueCoding: { code: 'high', display: 'High: often overwhelming' } },
+            { valueCoding: { code: 'very-high', display: 'Very high: chronic stress' } },
           ],
         },
         {
