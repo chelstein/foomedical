@@ -86,6 +86,24 @@ const services = [
     title: 'TCM: Acupuncture, Cupping & Gua Sha',
     description: 'Traditional Chinese medicine as part of integrative care',
   },
+  {
+    icon: IconActivity,
+    slug: 'physical-medicine',
+    title: 'Physical Medicine & Bodywork',
+    description: 'Hands-on therapies for pain, circulation, and recovery',
+  },
+  {
+    icon: IconHeartbeat,
+    slug: 'womens-wellness',
+    title: "Women's Wellness Exams",
+    description: 'Comprehensive preventive care tailored for women',
+  },
+  {
+    icon: IconDroplet,
+    slug: 'prp-peptides',
+    title: 'PRP & Peptide Injections',
+    description: 'Regenerative therapies for healing and performance',
+  },
 ];
 
 export function Header(): JSX.Element {
@@ -184,6 +202,26 @@ export function Header(): JSX.Element {
                 className={classes.link}
                 onClick={(e) => {
                   e.preventDefault();
+                  navigate('/pricing')?.catch(console.error);
+                }}
+              >
+                Pricing
+              </a>
+              <a
+                href="#"
+                className={classes.link}
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/vitamin-packages')?.catch(console.error);
+                }}
+              >
+                Vitamin Packages
+              </a>
+              <a
+                href="#"
+                className={classes.link}
+                onClick={(e) => {
+                  e.preventDefault();
                   navigate('/privacy')?.catch(console.error);
                 }}
               >
@@ -245,6 +283,28 @@ export function Header(): JSX.Element {
             }}
           >
             About
+          </a>
+          <a
+            href="#"
+            className={classes.link}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/pricing')?.catch(console.error);
+              closeDrawer();
+            }}
+          >
+            Pricing
+          </a>
+          <a
+            href="#"
+            className={classes.link}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/vitamin-packages')?.catch(console.error);
+              closeDrawer();
+            }}
+          >
+            Vitamin Packages
           </a>
           <a
             href="#"
