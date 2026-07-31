@@ -119,6 +119,10 @@ export function GetCare(): JSX.Element {
 
   return (
     <Document width={800}>
+      <Alert variant="light" color="yellow" icon={<IconInfoCircle />} mb="md">
+        New to Dr. Star NMD? Start with a free 15-minute Meet &amp; Greet — your complimentary introduction to
+        naturopathic care. Select an available slot below.
+      </Alert>
       <BaseScheduler actor={actor} fetchOptions={fetchAppointments} onSelectOption={holdAppointment}>
         {holdLoading && <Loader />}
         {!!holdError && (

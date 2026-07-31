@@ -31,6 +31,8 @@ import { QuestionnairePage } from './pages/QuestionnairePage';
 import { ScreeningQuestionnairePage } from './pages/ScreeningQuestionnairePage';
 import { SignOutPage } from './pages/SignOutPage';
 import { SmartHealthLinksPage } from './pages/SmartHealthLinksPage';
+import { PricingPage } from './pages/PricingPage';
+import { VitaminPackagesPage } from './pages/VitaminPackagesPage';
 
 export function Router(): JSX.Element {
   return (
@@ -72,6 +74,8 @@ export function Router(): JSX.Element {
         <Route path="membership-and-billing" element={<MembershipAndBilling />} />
       </Route>
       <Route path="signout" element={<SignOutPage />} />
+      <Route path="pricing" element={<PricingPage />} />
+      <Route path="vitamin-packages" element={<VitaminPackagesPage />} />
     </Routes>
   );
 }

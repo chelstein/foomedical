@@ -179,6 +179,69 @@ export const services: ServiceData[] = [
       'Immune and respiratory support',
     ],
   },
+  {
+    slug: 'physical-medicine',
+    title: 'Physical Medicine & Bodywork',
+    tagline: 'Hands-on therapies for pain, circulation, and recovery',
+    description:
+      'Dr. Star integrates physical medicine and bodywork into naturopathic care to address musculoskeletal pain, lymphatic congestion, and nervous system regulation. Modalities include lymphatic detox massage, deep myofascial tissue therapy, constitutional hydrotherapy, wet sheet wraps, trigger point injections, acupuncture, cupping, gua sha, and hot stone grounding — selected based on your individual presentation and treatment goals.',
+    whatToExpect: [
+      'An intake covering your pain patterns, circulation, and musculoskeletal history',
+      'Hands-on treatment tailored to your specific presentation',
+      'A combination of modalities chosen for your body and goals',
+      'Integration with your broader naturopathic treatment plan',
+    ],
+    conditions: [
+      'Chronic and acute musculoskeletal pain',
+      'Lymphatic congestion and edema',
+      'Fibromyalgia and widespread pain',
+      'Post-injury or post-surgical recovery',
+      'Nervous system dysregulation',
+      'Inflammation and restricted range of motion',
+    ],
+  },
+  {
+    slug: 'womens-wellness',
+    title: "Women's Wellness Exams",
+    tagline: 'Comprehensive preventive care tailored for women',
+    description:
+      "Dr. Star's women's wellness exams go beyond the standard annual visit to include a comprehensive physical examination, hormonal assessment, reproductive health review, and personalized preventive care planning. Whether you are maintaining your health, navigating a transition, or addressing a specific concern, the exam is designed around the full picture of your wellbeing.",
+    whatToExpect: [
+      'Full physical examination including breast and pelvic assessment as indicated',
+      'Hormonal and reproductive health evaluation',
+      'Screening for cardiovascular, metabolic, and nutritional risk factors',
+      'A personalized preventive care plan with actionable next steps',
+    ],
+    conditions: [
+      'Annual wellness and preventive care',
+      'Contraceptive counseling',
+      'Menstrual irregularities and cycle concerns',
+      'Perimenopause and menopause management',
+      'Hormonal imbalance',
+      'Reproductive and pelvic health',
+    ],
+  },
+  {
+    slug: 'prp-peptides',
+    title: 'PRP & Peptide Injections',
+    tagline: 'Regenerative therapies for healing and performance',
+    description:
+      "Platelet Rich Plasma (PRP) therapy uses your own blood's growth factors to accelerate healing in joints, tendons, and soft tissue. Peptide injections are used therapeutically to support recovery, hormone regulation, weight management, immune function, and anti-aging goals. Dr. Star selects and administers these therapies as part of a comprehensive treatment plan, not as standalone procedures.",
+    whatToExpect: [
+      'A thorough evaluation to determine whether PRP or peptide therapy is appropriate for your goals',
+      'In-office blood draw and centrifugation for PRP preparation',
+      'Guided injection under appropriate clinical technique',
+      'A recovery and follow-up plan to optimize your results',
+    ],
+    conditions: [
+      'Joint pain and osteoarthritis',
+      'Tendon and ligament injuries',
+      'Recovery optimization and anti-aging',
+      'Hormonal support through peptide protocols',
+      'Weight management with peptide therapy',
+      'Immune and metabolic support',
+    ],
+  },
 ];
 
 export function getServiceBySlug(slug: string): ServiceData | undefined {

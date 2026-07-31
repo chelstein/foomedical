@@ -15,6 +15,8 @@ import { RegisterPage } from './pages/RegisterPage';
 import { ServicePage } from './pages/services';
 import { SignInPage } from './pages/SignInPage';
 import { LandingPage } from './pages/landing';
+import { PricingPage } from './pages/PricingPage';
+import { VitaminPackagesPage } from './pages/VitaminPackagesPage';
 
 export function App(): JSX.Element | null {
   const medplum = useMedplum();
@@ -32,6 +34,8 @@ export function App(): JSX.Element | null {
         <Route path="services/:slug" element={<ServicePage />} />
         <Route path="about" element={<AboutPage />} />
         <Route path="privacy" element={<PrivacyPage />} />
+        <Route path="pricing" element={<PricingPage />} />
+        <Route path="vitamin-packages" element={<VitaminPackagesPage />} />
         <Route path="*" element={<Navigate replace to="/" />} />
       </Routes>
     );
